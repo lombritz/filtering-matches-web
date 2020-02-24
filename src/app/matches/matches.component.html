@@ -1,0 +1,69 @@
+
+<div style="padding: 30px;">
+  <form [formGroup]="filterForm">
+    <div>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <mat-select formControlName="ageIdx" [(ngModel)]="filterForm.ageIdx" (selectionChange)="reloadMatches()">
+          <mat-option *ngFor="let range of ageRanges; let i = index" [value]="i">
+            {{range.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Compatibility Score</mat-label>
+        <mat-select formControlName="scoreIdx" [(ngModel)]="filterForm.scoreIdx" (selectionChange)="reloadMatches()">
+          <mat-option *ngFor="let range of scoreRanges; let i = index" [value]="i">
+            {{range.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Height</mat-label>
+        <mat-select formControlName="heightIdx" [(ngModel)]="filterForm.heightIdx" (selectionChange)="reloadMatches()">
+          <mat-option *ngFor="let range of heightRanges; let i = index" [value]="i">
+            {{range.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-checkbox formControlName="hasPhoto" [(ngModel)]="filterForm.hasPhoto" (change)="reloadMatches()" [(indeterminate)]="hasPhotoIndeterminate">Has Photo?</mat-checkbox>
+      <mat-checkbox formControlName="inContact" [(ngModel)]="filterForm.inContact" (change)="reloadMatches()" [(indeterminate)]="inContactIndeterminate">In Contact?</mat-checkbox>
+      <mat-checkbox formControlName="favourite" [(ngModel)]="filterForm.favourite" (change)="reloadMatches()" [(indeterminate)]="favouriteIndeterminate">Favourite?</mat-checkbox>
+      <mat-form-field>
+        <mat-label>Distance (Km)</mat-label>
+        <input matInput placeholder="Distance in Km" formControlName="distanceInKm" [(ngModel)]="filterForm.distanceInKm" (change)="reloadMatches()" />
+      </mat-form-field>
+      <button mat-button (click)="resetFilter()">Reset</button>
+      <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+    </div>
+  </form>
+  <div>
+    <div *ngIf="matches.length === 0">
+      No Matches Found!
+    </div>
+    <mat-list *ngIf="matches.length > 0">
+      <mat-list-item><p>{{matches.length}} Matches Found!</p></mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <mat-card *ngFor="let match of matches" style="margin: 20px; width: 300px; float: left" >
+      <mat-card-header>
+        <mat-card-title>{{match.displayName}}</mat-card-title>
+        <mat-card-subtitle>{{match.jobTitle}} | {{match.age}} yo | {{match.heightInCm}} cm (height)</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{match.distanceInKm === null ? '' : 'Distance: ' + (match.distanceInKm|number:'1.0-2') + ' Km'}}<br>
+          Compatibility Score: {{match.compatibilityScore}}<br>
+          Contacts Exchanged: {{match.contactsExchanged}}<br>
+          Favourite: <mat-checkbox [checked]="match.favourite" disabled="true"></mat-checkbox><br>
+          Religion: {{match.religion}}<br>
+          City: {{match.city.name}}<br>
+        </p>
+        <img style="height:200px; width: 200px;" src="{{ match.mainPhoto === null ? 'https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder.png' : match.mainPhoto }}" />
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>See Location [ {{match.city.location[0]}}, {{match.city.location[1]}} ]</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
