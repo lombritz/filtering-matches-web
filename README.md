@@ -1,27 +1,19 @@
-# FilteringMatchesFe
+### Filtering Matches Web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+The Filtering Matches Web provides web app to find and filter matches.
 
-## Development server
+#### Build Commands
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- `./build.sh` build application and docker images.
+- `./build.sh clean` delete build files and docker images.
 
-## Code scaffolding
+#### Tests
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `./build.sh test` run unit tests.
+- `./build.sh e2e` run end-to-end tests.
 
-## Build
+#### API Commands
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- `./build.sh start` start the API with necessary containers. 
+- `./build.sh stop` stop the API and all related containers 
+- `docker-compose logs --follow` follow the logs.

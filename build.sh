@@ -64,5 +64,15 @@ if [ "$1" = "start" ]; then
   exit 0
 fi
 
+if [ "$1" = "test" ]; then
+  ng test
+  exit 0
+fi
+
+if [ "$1" = "e2e" ]; then
+  ng e2e
+  exit 0
+fi
+
 installAngular
 buildApp
