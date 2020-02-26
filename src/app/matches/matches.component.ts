@@ -5,8 +5,8 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { FormBuilder, FormControl } from '@angular/forms';
 
 import { MatchesService } from '../matches.service';
-import { MatchesRequest } from './matches-request';
-import { Match } from './match';
+import { MatchesRequest } from '../requests/matches-request';
+import { Match } from '../models/match';
 
 
 @Component({

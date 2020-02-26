@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatchesRequest } from './matches/matches-request';
+import { MatchesRequest } from './requests/matches-request';
 
 @Injectable({
   providedIn: 'root'
