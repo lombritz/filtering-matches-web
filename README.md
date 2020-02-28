@@ -1,6 +1,6 @@
 ### Filtering Matches Web
 
-The Filtering Matches Web provides web app to find and filter matches.
+The Filtering Matches Web provides web app to find and filter matches using `filtering-matches-api`.
 
 #### Build Commands
 
@@ -16,8 +16,8 @@ Note: Frontend/UI tests don't work yet.
 
 #### API Commands
 
-- `./build.sh start` start the API with necessary containers. 
-- `./build.sh stop` stop the API and all related containers 
+- `./build.sh start` start the app. After starting open http://localhost:4200/ in your favorite browser.
+- `./build.sh stop` stop the app.
 - `docker-compose logs --follow` follow the logs.
 
 #### ToDo
